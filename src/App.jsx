@@ -1,20 +1,19 @@
-import { useState } from 'react'
 import './App.css'
 import Blogs from './components/blogs/Blogs'
 import Header from './components/header/Header'
-import { useEffect } from 'react'
+import Bookmarks from './components/bookmarks/Bookmarks'
 
 function App() {
-  const [blogs, setBlogs] = useState([])
-  //load data 
-  useEffect(() =>{
-    fetch('./blogs.json').then(res => res.json()).then(data => setBlogs(data))
-  },[]) //dependency empty array means we are gonna load the data only once right after initial render
-  console.log(blogs)
+  
   return (
     <>
-      <Header></Header>
-      <Blogs></Blogs>
+      <div className='max-w-screen-lg mx-auto'>
+        <Header></Header>
+        <div className='md:flex'>
+          <Blogs></Blogs>
+          <Bookmarks></Bookmarks>
+        </div>
+      </div>
     </>
   )
 }
